@@ -1,0 +1,124 @@
+<script>
+    // 타이머 함수
+    // 시계를 만들 때, 움직임을 구현할 때 사용함.
+
+    setTimeout  // 특정한 시간 후에 함수를 한 번 호출합니다.
+    setInterval // 특정 시간마다 함수를 호출합니다.
+
+    const a = setTimeout(function () {
+        console.log('setTIMEout 함수 입니다!')
+    }, 1000) // 1초 뒤 setTIMEout 함수 입니다! 출력
+
+    const b = setInterval(function () {
+        console.log('setInterval 함수 입니다!')
+    }, 1000)  // 1초 마다 setInterval 함수 입니다! 출력
+
+    console.log(a, b)
+
+    // 타이머를 종료하고 싶을 때 이 함수를 사용.
+    clearTimeout(a)
+    clearInterval(b)
+
+        // 위 코드들을 그대로 적용할 경우 코드가 순차적으로 내려오면서 읽게 되는데,
+        // 이때 읽는 속도가 1초보다 빠르므로 setTimeout, setInterval 의 함수는 출력이 안된다.
+
+        // 즉시 호출 함수
+        (function () { })()
+    // 내부 블록에서만 사용가능하기 때문에 함수 충돌이 일어나지 않는다. 230쪽 참고
+
+    // 다른 곳에서 가져온 자바스크립트 코드
+
+    let pi = 3.14
+    console.log(`파이 값은 ${pi}입니다.`)
+
+        (function () {
+            let pi = 3.141592
+            console.log(`파이 값은 ${pi}입니다.`)
+        })()
+
+    // 엄격 모드
+    'use strict'
+    // const, let과 같이 선언을 하지 않으면 오류가 나옴. 덜 유연하게 하기 위한 전략
+    // but 자주 사용하는 것은 아니나 눈도장을 미리 찍어둔다는 개념으로 숙지.
+
+    // 익명 함수와 선언적 함수는 사용하는 상황이 비슷하다.
+    // 많은 개발자가 안전 등의 이유로 익명 함수를 선호하는 편이다.
+
+    // 익명 함수
+    // 익명 함수는 순차적인 코드 실행에서 코드가 해당 줄을 읽을 때 생성됨.
+
+    let 함수 = function () {
+        console.log(`A 함수입니다.`)
+    }
+
+    함수 = function () {
+        console.log(`B 함수입니다.`)
+    }
+
+    함수 = function () {
+        console.log(`C 함수입니다.`)
+    }
+    함수()
+
+    // 출력: C 함수입니다.
+
+
+    // 선언적 함수
+    // 순차적인 코드 실행이 일어나기 전에 생성됨.
+
+
+    함수()
+
+    함수 = function () {
+        console.log(`익명 함수입니다.`)
+    }
+
+    function 함수() {
+        console.log(`선언적 함수입니다.`)
+    }
+
+    함수()
+
+    // 선언적 함수입니다. <-먼저 생성됨
+    // 익명 함수입니다.
+
+    // 한 가지로 통일해서 사용하는 것이 오류의 위험을 줄일 수 있고, 
+    // 통일한다면 익명 함수로 통일해서 사용되는 것이 안전을 위해서 더 편한 선택이다.
+
+
+    // 확인 문제 (filter)
+    let numbers = [273, 25, 75, 52, 103, 32, 57, 24, 76]
+
+    // 홀수만 추출
+    numbers = numbers.filter((value) => value % 2 == 1)
+    console.log('# 홀수만 추출')
+    console.log(numbers)
+    // 100 이하의 수만 추출
+    numbers = numbers.filter((value) => value <= 100)
+    console.log('# 100 이하의 수만 추출')
+    console.log(numbers)
+    // 5로 나눈 나머지가 0인 수만 추출
+    numbers = numbers.filter((value) => value % 5 == 0)
+    console.log('# 5로 나눈 나머지가 0인 수만 추출')
+    console.log(numbers)
+
+    // 확인 문제 (forEach)
+    const array = ['사과', '배', '귤', '바나나']
+
+    console.log('# for in 반복문')
+    // for (const i in array) {
+    //     console.log(i)
+    // }
+    array.forEach(function (value, index, array) {
+        console.log(index)
+    })
+    console.log('# for of 반목문')
+    // for (const i of array) {
+    //     console.log(i)
+    // }
+    array.forEach(function (value, index, array) {
+        console.log(value)
+    })
+    
+    
+</script>

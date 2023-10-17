@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const load = () => {
+            const data = localStorage.getItem('애플리케이션')
+            if (data !== null) {
+                return JSON.parse(data)
+            } else {
+                return {
+                    color: 'red',
+                    message: ''
+                }
+            }
+
+        }
+        const save = (data) => {
+            localStorage.setItem('애플리케이션', JSON.stringify(data))
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // localStorage.getItem('키') // 저장된 값을 추출한다
+            // localStorage.setItem('키', '값') // 특정 키로 값을 저장한다
+            // localStorage.removeItem('키') // 특정 키의 값을 제거한다
+            // localStorage.clear() // 전체 제거
+            const p = document.querySelector('p')
+            const button = document.querySelector('button')
+            const input = document.querySelector('input')
+            const select = document.querySelector('select')
+
+
+            // 초기 실행
+            const data = load()
+            p.textContent = `이전 작성한 마지막 글: ${data.message}`
+            input.value = data.message
+
+            document.body.style.backgroundColor = data.color
+            select.value = data.color
+
+            // 이벤트 연결
+            button.addEventListener('click', () => {
+                // 데이터를 모두 지우고!
+                data.color = 'red'
+                data.message = ''
+                save(data)
+                // 입력양식 초기화!
+                input.value = 'red'
+                input.value = ''
+            })
+            input.addEventListener('keyup', () => {
+                data.message = input.value
+                save(data)
+            })
+            select.addEventListener('change', () => {
+                const color = select.options[select.selectedIndex].value
+                // 입력 양식 반영
+                document.body.style.backgroundColor = color
+                // 데이터를 저장
+                data.color = color
+                save(data)
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <p></p>
+
+    <button>지우기</button>
+    <input type="text" name="" id="">
+    <!-- 드롭다운 -> 옵션: 색상 -> 페이지 배경색상 변경 -> 저장됨 -->
+    <select name="" id="">
+        <option value="red">빨간색</option>
+        <option value="blue">파란색</option>
+        <option value="green">초록색</option>
+    </select>
+</body>
+
+</html>

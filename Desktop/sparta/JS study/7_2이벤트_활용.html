@@ -1,0 +1,227 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // 키보드 이벤트
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     document.addEventListener('keydown', (이벤트객체) => {
+        //         document.body.innerHTML = `<h1>keydown ${이벤트객체.code}</h1>`
+
+        //     })
+        //     document.addEventListener('keyup', () => {
+        //         document.body.innerHTML = '<h1>keyup</h1>'
+
+        //     })
+        // })
+
+
+        // 남을 글자 수 출력하기
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const textarea = document.querySelector('textarea')
+        //     const h1 = document.querySelector('h1')
+
+        //     textarea.addEventListener('keyup', () => {
+        //         h1.textContent = `글자 수: ${textarea.value.length}`
+        //     })
+        //     textarea.addEventListener('keyup', (evnet) => {
+        //         h1.textContent = `글자 수: ${event.currentTarget.value.length}`
+        //     })// 꼭 기억
+        //     textarea.addEventListener('keyup', function () {
+        //         h1.textContent = `글자 수: ${this.value.length}`
+        //     })
+        // })
+
+
+        // 이벤트 발생 객체
+
+
+
+        // 기본 이벤트 막기
+        // document.addEventListener('DOMContentLoaded', ()=> {
+        //     const a = document.querySelector('a')
+        //     a.addEventListener('click', (event) => {
+        //         event.preventDefault()//클릭 금지
+        //     })
+        //     a.addEventListener('contextmenu', (event) => {
+        //         event.preventDefault() //오른쪽 마우스 클릭 금지
+        //     })
+        // }) 
+
+
+        // 글자 입력 양식 이벤트
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const form = document.querySelector('form')
+        //     form.addEventListener('submit', (event) => {
+        //         const text = document.querySelector('input[type=text]')
+        //         if (text.value.indexOf('@' && '.') >= 0) {
+        //             alert('정상적으로 제출합니다!')
+
+        //         } else {
+        //             alert('이메일 형식을 입력해주세요!')
+        //             event.preventDefault()
+        //         }
+        //     })
+
+        // })
+
+        // 글자 입력으로 사용할 수 있는 태그
+        // document.addEventListener('DOMContentLoaded', () =>{
+        //     const input = document.querySelector('input')
+        //     //const button = document.querySelector('button')
+        //     const p = document.querySelector('p')
+
+        //     // value 속성: 값 추출!
+        //     // keydown -> keypress -> 입력양식에 값이 들어감! -> keyup
+        //     // change 이벤트: 입력 양식 전체에 값 입력을 마쳤을 때!
+        //     input.addEventListener('change', () => {
+        //         p.textContent = `${Number(input.value) * 2.54}cm로 변환되었습니다.`
+        //         // 입력을 숫자로 변환합니다.
+        //         const inch = Number(input.value) 
+        //         // 숫자가 아니라면 바로 리턴합니다.
+        //         if (isNaN(inch)) {
+        //             p.textContent = '숫자를 입력해주세요.'
+        //             return
+        //         }
+        //     })
+        // })
+        
+
+        // 드롭다운 목록 활용하기
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const select = document.querySelector('select')
+        //     const p = document.querySelector('p')
+
+        //     select.addEventListener('change', (event) => {
+        //         const options = event.currentTarget.options
+        //         // multiple select 태그
+        //         const list = []
+        //         for (const option of options) {
+        //             if (option.selected) {
+        //                 list.push(option.textContent)
+        //             }
+        //         }
+        //         p.textContent = `선택: ${list.join(',')}`
+        
+        //     })
+        // })
+
+        // cm 단위를 여러 단위로 변환하는 프로그램
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const input = document.querySelector('input')
+        //     const select = document.querySelector('select')
+        //     const span = document.querySelector('span')
+        //     const handler = () => {
+        //         const value = Number(input.value)
+        //         const selected = select.options[select.options.selectedIndex]
+        //         span.textContent = value * Number(selected.value)
+        //     }
+        //     input.addEventListener('keyup', handler)
+        //     select.addEventListener('change', handler)
+        // })
+
+        // 체크 박스 활용하기  
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const checkbox = document.querySelector('input[type=checkbox]')
+        //     const checkboxResult = document.querySelector('h1#checkbox')
+        //     checkbox.addEventListener('change', () =>{
+        //         if (checkbox.checked) {
+        //             checkboxResult.textContent = '체크'
+        //         } else {
+        //             checkboxResult.textContent = '해제'
+        //         }
+        //     })
+        //     const radios = document.querySelectorAll('input[type=radio][name=gender]')
+        //     const radioResult = document.querySelector('h1#radiobutton')
+        //     radios.forEach((radio) =>{
+        //         radio.addEventListener('change', (event) => {
+        //         radioResult.textContent = event.currentTarget.value
+        //     })
+        //     })
+        // })
+
+        // 타이머 할성화
+        document.addEventListener('DOMContentLoaded', () => {
+            let [seconds, timerId] = [0, 0] // 각각 배열에 대입된다.
+            const checkbox = document.querySelector('input[type=checkbox]')
+            const checkboxResult = document.querySelector('h1#checkbox')
+            checkbox.addEventListener('change', () => {
+                document.body.style.backgroundColor = 'red' // 배경화면
+                if (checkbox.checked) {
+                    timerId = setInterval(() => {
+                        seconds += 1
+                        checkboxResult.textContent = `${seconds}초`
+                    }, 1000)
+                } else {
+                    clearInterval(timerId)
+                    document.body.style.backgroundColor = 'white' // 배경화면
+                }
+            })
+        })
+
+    </script>
+</head>
+
+<body>
+    
+<!-- 남은 글자 수 출력하기 -->
+<!-- <h1></h1>
+<textarea></textarea> -->
+
+<!-- 기본 이벤트 막기 -->
+<!-- <a href="naver.com">네이버 이동</a> -->
+<!-- 글자 입력 양식 이벤트 -->
+
+<!-- click 이벤트 -->
+<!-- <button>btn</button>
+<input type="button" value="input btn"> -->
+
+<!-- submit 이벤트(click 이벤트도 가능하지만......) -->
+<!-- <form action="">
+    이메일 형식을 입력해주세요!<br>
+    <input type="text" name="test" id="">
+    <input type="submit" value="submit"> -->
+
+<!-- 글자 입력으로 사용할 수 있는 태그 -->
+<!-- <input type="text" name="" id=""></input> inch<br> -->
+<!-- <button>계산</button> -->
+<!-- <p></p> -->
+<!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+<!-- <p contenteditable="true">음메</p> -->
+<!-- </form> -->
+<!-- <select name="" id="" multiple>
+    <option value="">떡볶이</option>
+    <option value="">순대</option>
+    <option value="">오뎅</option>
+    <option value="">튀김</option>
+</select> -->
+<!-- <p>선택: </p> -->
+
+<!-- CM 단위를 여러 단위로 변환하는 프로그램 -->
+<!-- <input type="text" name="" id="" value="0"> cm = 
+<span>0</span>
+<select name="" id="">
+    <option value="10">mm</option>
+    <option value="0.01">m</option>
+    <option value="0.393701">inch</option>
+</select> -->
+
+
+<!-- 체크 박스 활용하기 -->
+<!-- 어떤 대상의 true 또는 false -->
+<!-- <input type="checkbox"> <br>
+<h1 id="checkbox"></h1> -->
+<!-- 여러 대상 중에서 하나를 선택(name속성을 꼭 같이 사용해야함) -->
+<!-- <input type="radio" name="gender" id="" value="여성">여성 <br>
+<input type="radio" name="gender" id="" value="남성">남성 <br>
+<input type="radio" name="gender" id="" value="직접 지정">직접 지정 <br>
+<h1 id="radiobutton"></h1> -->
+
+<!-- 타이머 활성화 -->
+<input type="checkbox" name="" id="">타이머 활성화
+<h1 id="checkbox"></h1>
+
+</body>
+
+</html>

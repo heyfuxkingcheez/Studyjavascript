@@ -1,0 +1,51 @@
+<script>
+
+        // 과거(1)
+        object.status = object.status !== undefined ? object.status : '이상 없음'
+
+        // 과거(2) dog.status 빈문자열 or 0과 같이 false 변환되는 값이 오지 않는다면!
+        object.status = object.status ? object.status : '이상 없음'
+
+        // 과거(3)
+        object.status = object.status || '이상 없음'
+
+        // 현대(1)
+        const test = function (object) {
+            const {name, age, color, status} = { status: '이상 없음', ...object }
+
+            return `${name} : ${age} : ${color} : ${status}`
+        }
+        // 현대(2)
+        const test = function ({
+            name,
+            age,
+            color,
+            status = '이상 없음'
+        }) {
+            return `${name} : ${age} : ${color} : ${status}`
+        }
+
+        console.log(test({
+            name: '구름',
+            age: 7,
+            color: '갈색'
+        }))
+
+        const dog = {
+            name: '구름',
+            age: 7,
+            color: '갈색',
+            status: '다리가 아파요'
+        }
+
+        const newDog = {
+            status: '이상 없음',
+            ...dog //위치가 중요하다.
+        }
+
+        console.log(dog.age)
+        console.log(dog.name)
+        console.log(dog.color)
+
+
+</script>

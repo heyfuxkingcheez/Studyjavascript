@@ -1,0 +1,51 @@
+<script>
+// 객체의 기본
+    // 배열(array)
+    const array = [100, 20, '문자열', true, function, () { }, () => { }]
+    console.log(array[0])
+
+    // 속성(property)
+    // 메서드(method)
+    const dog = {
+        name: '구름',
+        age: 7,
+        bark: function() {
+            console.log(`${dog.name}이/가 짖습니다.`)
+            console.log(`${this.name}이/가 짖습니다`)
+            console.log(this)
+        },
+        sleep: () =>{
+            console.log(`${dog.name}이/가 잡니다!`)
+            console.log(this)
+        }
+        }
+    dog.bark()
+    dog.sleep ()
+
+    // 익명 함수: this 바인딩을 한다
+    // 화살표 함수: this 바인딩을 안 한다.
+    // this 바인딩: this를 현재 객체와 연결하는 행위\
+
+
+// 객체에 동적으로 속성 추가하기
+
+// 처음 만들 떄 같이 만드는 것 -> 정적으로 생성한다.
+const pet = {
+    name : '구름',
+    age : 8
+}
+// 힙 내에서 바꾸고 지지고 볶는건 자유지만 스택자체를 바꾸는건 불가능
+
+// 나중에 만드는 것 -> 동적으로 생성한다.
+pet.color = 'brown'
+
+// 객체의 키와 값을 동적으로 제거한다.
+delete pet.color
+
+//출력
+console.log(pet)
+
+
+
+
+</script>

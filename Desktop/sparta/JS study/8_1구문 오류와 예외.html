@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // 프로그램 실행 "전"에 발생하는 오류
+        // 구문 오류 (SyntaxError)
+
+        // 프로그램 실행 "중"에 발생하는 오류
+        // 런타임 오류 + 예외(exception)
+
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const h1 = document.querySelector('h1')
+
+        //     // 고급 예외 처리
+        //     try {
+        //         // 예외가 발생할 가능성이 있는 코드
+        //         h1.textContent = '변경!'
+        //     } catch (예외_객체) {
+        //         // 예외가3 발생했을 때 실행할 코드
+        //         console.log('오류가 발생했습니다!')
+        //         console.log(예외_객체)
+        //         console.log(예외_객체.name)
+        //         console.log(예외_객체.message)
+
+        //     } finally {
+        //         // 무조건적으로 실행되는 코드
+        //     }
+
+        //     // 기본 예외 처리
+        //     // if (h1 === null) {
+        //     //     console.log('오류가 발생했습니다!')
+        //     // } else {
+        //     //     h1.textContent = '변경!'
+        //     // }
+
+        // })
+        // 과거2
+        // function isRequierd (객체, 속성이름) {
+        //     if (typeof(객체[속성이름]) === 'undefined') {
+        //         throw `${속성이름} 매개변수에 문제가 있습니다!`
+        //     }
+        // }
+        // function 메일보내기(객체) {
+        //     // 매개변수가 잘못 들어왔다 -> 예외!!
+        //     // 과거1
+        //     // if (typeof(객체.발신인) === 'undefined') {
+        //     //     throw '발신인 매개변수에 문제가 있습니다!'
+        //     // }
+        //     // if (typeof(객체.수신인) === 'undefined') {
+        //     //     throw '수신인 매개변수에 문제가 있습니다!'
+        //     // }
+        //     // if (typeof(객체.내용) === 'undefined') {
+        //     //     throw '내용 매개변수에 문제가 있습니다!'
+        //     // }
+        //     // 과거1
+
+        //     // 과거2
+        //     // isRequierd(객체, '발신인')
+        //     // isRequierd(객체, '수신인')
+        //     // isRequierd(객체, '내용')
+        //     console.log(`발신인: ${객체.발신인}`)
+        //     console.log(`수신인: ${객체.수신인}`)
+        //     console.log(객체.내용)
+        // }
+
+        // 메일보내기({
+        //     발신인: '별',
+        //     수신인: '구름',
+        //     내용: '간식줘!'
+        // })
+
+        // 현대적 예외 처리 방법
+        function isRequierd (이름) {throw `${이름} 매개변수에 문제가 있습니다.`}
+        function 메일보내기({
+            발신인 = isRequierd('발신인'),
+            수신인 = isRequierd('수신인'),
+            내용 = isRequierd('내용')
+        }) {
+            console.log(`발신인: ${발신인}`)
+            console.log(`발신인: ${발신인}`)
+            console.log(내용)
+        }
+        메일보내기({
+            발신인: '별',
+            수신인: '구름',
+            내용: '간식줘!'
+        })
+
+        // 하나 더!
+        function 메일보내기 ({
+            발신인 = '사용자',
+            수신인 = '관리자',
+            내용 = '문제가 발생했음!'
+        } = {}) {
+            console.log(`발신인: ${발신인}`)
+            console.log(`발신인: ${발신인}`)
+            console.log(내용)
+        }
+
+        메일보내기 ({})
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
